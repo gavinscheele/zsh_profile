@@ -1,0 +1,14 @@
+alias chalias='vim ~/.zsh_aliases'
+alias zshrc='vim ~/.zshrc'
+alias chfunc='vim ~/.zsh_functions'
+alias chenv='vim ~/.env'
+alias src='source ~/.zshrc && source ~/.zsh_aliases && source ~/.zsh_functions'
+
+# Start projects
+alias dc='docker-compose -f ~/developer/perception-docker/docker-compose.yml -f ~/developer/java/talent-ui-gateway/docker-compose.yml'
+alias per='wd docker; make bash'
+alias dckill='$(wd docker && docker-compose down && dc down) && docker kill $(docker ps -aq) && docker rm $(docker ps -aq)'
+alias dckill_stopped='docker rm $(docker ps -q -f "status=created" -f "status=paused" -f "status=removing" -f "status=dead" -f "status=exited")'
+
+# JMeter
+

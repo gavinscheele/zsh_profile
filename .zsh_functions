@@ -1,0 +1,30 @@
+git-update(){
+git fetch $1
+git pull --rebase $1 $2
+}
+
+git-updates(){
+git stash -k -u
+git-update
+git stash pop
+}
+
+git-branch-d(){
+git branch | grep -v "master\|develop" | xargs git branch -D
+}
+
+git-perf-clone(){
+git clone ssh://git@ultigit.ultimatesoftware.com:7999/perfdev/$1.git
+}
+
+wdo() {
+	$(wd $1 && code .)
+}
+
+dup(){
+	$(wd docker && docker-compose -f docker-compose.yml -f /Users/gavinsc/developer/java/talent-ui-gateway/docker-compose.yml up -d $1)
+}
+
+jmeter(){
+	$JMETER_HOME/bin/jmeter.sh -t $TESTS_HOME/$1/$1.jmx & &> /dev/null
+}
